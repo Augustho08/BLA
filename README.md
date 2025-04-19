@@ -1,1 +1,1 @@
-botei oq sabia em pratica k, falta teminar (obs: Não vai ficar com nada do lula, vou rancar tudo)# BLABLA
+Git hub Não aceita banco de dados, ent Ficou só o login kkkkkkk# BLABLA
