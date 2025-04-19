@@ -99,7 +99,7 @@ app.post('/login', (req, res) => {
     });
 });
 
-// Iniciar o servidor (remover a segunda chamada para listen)
+// Iniciar o servidor (apenas uma chamada para listen)
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);
 });
