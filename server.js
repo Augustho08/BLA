@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const path = require('path');
 
 const app = express();
-const port = 3000;
+const port = 41877;
 
 // Configurar o middleware
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -14,10 +14,10 @@ app.use(bodyParser.json()); // Para permitir que o servidor processe JSON
 
 // Criar a conexão com o MySQL
 const db = mysql.createConnection({
-    host: 'localhost',
+    host: 'gondola.proxy.rlwy.net',
     user: 'root',
     password: '',
-    database: 'cadastro2'
+    database: 'usuários'
 });
 
 // Conectar ao MySQL e criar a tabela, se necessário
