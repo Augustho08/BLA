@@ -105,6 +105,6 @@ app.post('/login', (req, res) => {
 });
 
 // Iniciar o servidor
-app.listen(port, () => {
+app.listen(PORT, () => {
     console.log(`Servidor rodando em http://localhost:${port}`);
 });
