@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ALogin.css">
+    <title>Faça Login</title>
+</head>
+<body>
+    <form class="form" id="loginForm"> 
+        <div class="form-title"><span>f/t 6</span></div>  
+        <div class="title-2"><span>tt 3</span></div>  
+        
+        <div class="input-container">  
+            <input id="username" placeholder="Digite Seu Nome" type="text" class="input-username" aria-label="Username" required />  
+        </div>  
+        
+        <div class="input-container">  
+            <input id="email" placeholder="Digite Seu Email" type="email" class="input-mail" aria-label="Email" required />  
+        </div>  
+        
+        <div class="input-container">  
+            <input id="password" placeholder="Password" type="Digite Sua Senha" class="input-pwd" aria-label="Password" required />  
+        </div>  
+        <button class="submit" type="submit">  
+            <span class="sign-text">Sign in</span>  
+        </button>  
+        
+        <p class="signup-link">  
+            No account?  
+            <a class="up" href="ARegis.html">Sign up!</a>  
+        </p>  
+    </form>  
+        
+    <section class="bg-stars">  
+        <span class="star"></span>  
+        <span class="star"></span>  
+        <span class="star"></span>  
+        <span class="star"></span>  
+        <span class="star"></span>  
+        <span class="star"></span>  
+        <span class="star"></span>  
+        <span class="star"></span>  
+        <span class="star"></span>  
+        <span class="star"></span>
+        <span class="star"></span>  
+        <span class="star"></span>  
+        <span class="star"></span>  
+        <span class="star"></span>  
+        <span class="star"></span>
+    </section>  
+
+    <script>
+        // Adiciona evento ao formulário para verificar o login
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio do formulário para tratamento via JS
+            
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Faz uma requisição POST para o servidor para verificar o login
+            fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, senha: password }) // Envia email e senha
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.text(); // Retorna a resposta do servidor
+                }
+                throw new Error('Login falhou'); // Lança erro se a resposta não for ok
+            })
+            .then(message => {
+                alert(message); // Exibe mensagem de sucesso
+                // Redirecionar para a página de compras
+                if (message.includes('Login realizado com sucesso!')) {
+                    window.location.href = 'Bsite.html'; // Redireciona para Bsite.html
+                }
+            })
+            .catch(error => {
+                alert("Email ou senha incorretos. Por favor, verifique se estão corretos ou registre-se."); // Mensagem de erro
+            });
+        });
+    </script>
+</body>
+</html>

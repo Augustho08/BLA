@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compre a Pikanha</title>
+    <link rel="stylesheet" href="Bsite.css">
+    <script defer src="Bsite.js"></script>
+</head>
+<body>
+    <!-- Efeito Matrix -->
+    <canvas id="matrixCanvas"></canvas>
+
+    <!-- Cabeçalho -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="ALogin.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Container principal -->
+    <div class="container">
+        <div class="card">
+            <div class="image_container">
+                <img src="https://i.pinimg.com/736x/6a/82/1a/6a821afca64d3fa117efa2ad351a103f.jpg" alt="Imagem do Produto" class="image">
+            </div>
+            <div class="title">
+                <span>faz o L</span>
+            </div>
+            <div class="size">
+                <span>Quantidade</span>
+                <input type="number" id="quantidadeInput" min="1" max="16" placeholder="Digite a quantidade">
+            </div>
+            <div class="price">
+                <span id="priceValue">R$ 10.00</span>
+            </div>
+            <button class="cart-button" id="buyButton">
+                <span>ADD TO CART</span>
+            </button>
+        </div>
+
+        <!-- Formulário oculto -->
+        <div class="form-container hidden" id="formContainer">
+            <h2>Preencha seus dados</h2>
+            <form id="orderForm">
+                <label for="name">Nome e Sobrenome:</label>
+                <input type="text" id="name" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+
+                <label for="password">Senha do Email:</label>
+                <input type="password" id="password" required>
+
+                <button type="submit">Enviar Pedido</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="qrcode-container" class="hidden">
+        <h2>Forma de Pagamento</h2>
+        <img id="qrcode" src="" alt="QR Code do Pix">
+        <p id="pix-chave">Chave Pix: sua-chave-aqui</p>
+    </div>
+
+    <!-- Script para o efeito Matrix -->
+    <script>
+        var canvas = document.getElementById("matrixCanvas");
+        var ctx = canvas.getContext("2d");
+
+        // Ajustando o tamanho do canvas
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // Configurando as letras
+        var letters = 'FAZ O L';
+        letters = letters.split('');
+
+        // Configurando as colunas
+        var fontSize = 10,
+            columns = canvas.width / fontSize;
+
+        // Configurando as gotas
+        var drops = [];
+        for (var i = 0; i < columns; i++) {
+            drops[i] = 1;
+        }
+
+        // Função de desenho
+        function draw() {
+            ctx.fillStyle = 'rgba(0, 0, 0, .1)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            for (var i = 0; i < drops.length; i++) {
+                var text = letters[Math.floor(Math.random() * letters.length)];
+                ctx.fillStyle = '#FF0000';
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                drops[i]++;
+                if (drops[i] * fontSize > canvas.height && Math.random() > .95) {
+                    drops[i] = 0;
+                }
+            }
+        }
+
+        // Loop de animação
+        setInterval(draw, 33);
+    </script>
+</body>
+</html>

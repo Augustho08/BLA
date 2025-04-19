@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ARegis.css">
+    <title>Registre-se</title>
+</head>
+<body>
+    <form class="form" id="registerForm"> <!-- Removendo action e method para tratar via JS -->
+        <div class="form-title"><span>Cadastre-se</span></div>
+        <div class="title-2"><span>Preencha</span></div>
+
+        <div class="input-container">
+            <input id="username" name="nome" placeholder="Nome e Sobrenome" type="text" class="input-username" required />
+        </div>
+
+        <div class="input-container">
+            <input id="email" name="email" placeholder="Digite Seu Email" type="email" class="input-mail" required />
+        </div>
+
+        <div class="input-container">
+            <input id="password" name="senha" placeholder="Digite Sua Senha" type="password" class="input-pwd" required />
+        </div>
+
+        <div id="notification" style="display: none; padding: 10px; margin: 10px 0; border-radius: 5px;"></div>
+
+        <button class="submit" type="submit">
+            <span class="sign-text">Registrar</span>
+        </button>
+
+        <p class="signup-link">
+            Já tem uma conta?
+            <a class="up" href="Alogin.html">Fazer login!</a>
+        </p>
+    </form>
+
+    <section class="bg-stars">
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+    </section>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', async (event) => {
+            event.preventDefault(); // Impede o envio padrão do formulário
+
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+
+            const response = await fetch('/cadastro', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            const message = await response.text();
+            alert(message); // Exibe a mensagem de resposta
+        });
+    </script>
+
+</body>
+</html>
