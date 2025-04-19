@@ -1,11 +1,16 @@
 {
-  "name": "meu-site",
+  "name": "meu-projeto",
   "version": "1.0.0",
-  "script":{
-    "start":"node server.js"
+  "description": "Meu site com Node.js",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
   },
-  "dependencies":{
-    "express":"^4.18.2",
-    "mysql":^2.18.1"
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql": "^2.18.1"
   }
 }
