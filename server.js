@@ -7,11 +7,6 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-app.listen(PORT, () => {
-    console.log(`Servidor rodando na porta ${PORT}`);
-});
-
-
 // Configurar o middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname))); // Para servir arquivos estáticos, como HTML
@@ -104,7 +99,7 @@ app.post('/login', (req, res) => {
     });
 });
 
-// Iniciar o servidor
+// Iniciar o servidor (remover a segunda chamada para listen)
 app.listen(PORT, () => {
-    console.log(`Servidor rodando em http://localhost:${port}`);
+    console.log(`Servidor rodando na porta ${PORT}`);
 });
