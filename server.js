@@ -23,7 +23,7 @@ const db = mysql.createConnection({
     user: 'root',
     password: 'NRUhRByEXkTjfKhYJnzFZrSvxCxBhUlh',
     database: 'railway',
-    port: 3306
+    port: 3306,
 });
 
 // Conectar ao MySQL e criar a tabela, se necessário
