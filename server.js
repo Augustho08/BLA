@@ -14,11 +14,11 @@ app.use(bodyParser.json()); // Para permitir que o servidor processe JSON
 
 // Criar a conexão com o MySQL
 const db = mysql.createConnection({
-    host: 'mysql.railway.internal',
+    host: '',
     user: 'root',
-    password: 'NRUhRByEXkTjfKhYJnzFZrSvxCxBhUlh',
-    database: 'railway',
-    port: 3306,
+    password: '',
+    database: 'cadastro2',
+    port: localhost,
 });
 
 // Conectar ao MySQL e criar a tabela, se necessário
